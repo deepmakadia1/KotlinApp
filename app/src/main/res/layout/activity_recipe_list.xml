@@ -26,5 +26,27 @@
 
         </androidx.appcompat.widget.Toolbar>
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+
+        <me.ibrahimsn.lib.CirclesLoadingView
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:animDelay="150"
+            app:animDistance="10dp"
+            app:animDuration="500"
+            app:animInterpolator="accelerateDecelerate"
+            app:circleMargin="8dp"
+            app:circleRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recRecipes" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

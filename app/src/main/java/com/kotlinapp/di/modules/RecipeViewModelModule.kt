@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 @Module
 abstract class RecipeViewModelModule {
 
@@ -35,9 +35,9 @@ abstract class RecipeViewModelModule {
         @JvmStatic
         @Provides
         fun provideRecipeRetrofit(
-            gsonConverterFactory: GsonConverterFactory?,
-            rxJava2CallAdapterFactory: RxJava2CallAdapterFactory?,
-            okHttpClient: OkHttpClient?
+            gsonConverterFactory: GsonConverterFactory,
+            rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
+            okHttpClient: OkHttpClient
         ): Retrofit? {
             return Retrofit.Builder()
                 .baseUrl(Constants.RECIPE_BASE_URL)

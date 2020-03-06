@@ -55,7 +55,7 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
                     hideProgress()
                 }
 
-            }
+            }.rxSingleCall(it)
         }
 
         return mutableLiveDataRecipeList

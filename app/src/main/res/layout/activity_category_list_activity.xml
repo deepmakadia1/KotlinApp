@@ -38,10 +38,10 @@
             app:circleMargin="8dp"
             app:circleRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/recRecipes" />
+            app:layout_constraintTop_toTopOf="@+id/recCategories" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recRecipes"
+            android:id="@+id/recCategories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"

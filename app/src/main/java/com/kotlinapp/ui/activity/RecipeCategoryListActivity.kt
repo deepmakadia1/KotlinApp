@@ -19,20 +19,20 @@ class RecipeCategoryListActivity : BaseActivity<ActivityCategoryListActivityBind
         super.onCreate(savedInstanceState)
 
         categoryListAdapter = CategoryListAdapter(this,categoryList)
-        binding?.recRecipes?.layoutManager = LinearLayoutManager(this)
-        binding?.recRecipes?.adapter = categoryListAdapter
+        binding?.recCategories?.layoutManager = LinearLayoutManager(this)
+        binding?.recCategories?.adapter = categoryListAdapter
 
         viewModel?.getProgress()?.observe(this, Observer {
             if(it){
                 binding?.progress?.visibility = View.VISIBLE
-                binding?.recRecipes?.visibility = View.GONE
+                binding?.recCategories?.visibility = View.GONE
             }else{
                 binding?.progress?.visibility = View.GONE
-                binding?.recRecipes?.visibility = View.VISIBLE
+                binding?.recCategories?.visibility = View.VISIBLE
             }
         })
-        viewModel?.getCategories()?.observe(this, Observer { setRecyclerView(it) })
 
+        viewModel?.getCategories()?.observe(this, Observer { setRecyclerView(it) })
 
     }
 
