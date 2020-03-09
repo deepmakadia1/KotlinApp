@@ -37,6 +37,7 @@
             app:animInterpolator="accelerateDecelerate"
             app:circleMargin="8dp"
             app:circleRadius="8dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="@+id/recCategories" />
 

@@ -11,10 +11,12 @@ class CustomBindingAdapter {
     companion object {
         @JvmStatic
         @BindingAdapter("imageUrl")
-        fun setImageUrl(imageView: ImageView, url: String) {
-            val requestOptions = RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
-            Glide.with(imageView.context).setDefaultRequestOptions(requestOptions).load(url)
-                .into(imageView)
+        fun setImageUrl(imageView: ImageView, url: String?) {
+            if(!(url == null || url.isEmpty())) {
+                val requestOptions = RequestOptions.placeholderOf(R.drawable.ic_launcher_background)
+                Glide.with(imageView.context).setDefaultRequestOptions(requestOptions).load(url)
+                    .into(imageView)
+            }
         }
     }
 

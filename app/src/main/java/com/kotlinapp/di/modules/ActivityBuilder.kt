@@ -1,5 +1,6 @@
 package com.kotlinapp.di.modules
 
+import com.kotlinapp.ui.activity.RecipeActivity
 import com.kotlinapp.ui.activity.RecipeCategoryListActivity
 import com.kotlinapp.ui.activity.RecipeListActivity
 import dagger.Module
@@ -14,4 +15,6 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [RecipeViewModelModule::class])
     abstract fun recipeListActivity(): RecipeListActivity
 
+    @ContributesAndroidInjector(modules = [RecipeViewModelModule::class])
+    abstract fun recipeActivity():RecipeActivity
 }

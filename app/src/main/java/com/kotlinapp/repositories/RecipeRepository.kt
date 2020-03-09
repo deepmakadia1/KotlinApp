@@ -3,6 +3,7 @@ package com.kotlinapp.repositories
 import androidx.lifecycle.MutableLiveData
 import com.kotlinapp.model.entity.RecipeCategoryModel
 import com.kotlinapp.model.entity.RecipeListModel
+import com.kotlinapp.model.entity.RecipeModel
 import com.kotlinapp.model.state.RecipeServiceInterface
 import com.kotlinapp.network.RXRetroManager
 import javax.inject.Inject
@@ -59,6 +60,34 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
         }
 
         return mutableLiveDataRecipeList
+    }
+
+    private var mutableLiveDataRecipe = MutableLiveData<ArrayList<RecipeModel.Meal>>()
+    private var recipe = ArrayList<RecipeModel.Meal>()
+
+    fun getMutableLiveDataRecipe(mealId: String): MutableLiveData<ArrayList<RecipeModel.Meal>> {
+
+        showProgress()
+
+        recipeServiceInterface?.getRecipe(mealId)?.let {
+            object : RXRetroManager<RecipeModel>() {
+                override fun onSuccess(Response: RecipeModel) {
+                    hideProgress()
+                    recipe.clear()
+                    recipe.addAll(Response.meals)
+                    mutableLiveDataRecipe.value = recipe
+                }
+
+                override fun onFailure(msg: String) {
+                    hideProgress()
+                }
+
+            }.rxSingleCall(it)
+        }
+
+
+
+        return mutableLiveDataRecipe
     }
 
     fun getProgress(): MutableLiveData<Boolean> {

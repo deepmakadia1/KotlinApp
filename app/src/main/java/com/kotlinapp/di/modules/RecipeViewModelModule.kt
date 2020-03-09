@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.kotlinapp.di.annotation.ViewModelKey
 import com.kotlinapp.model.state.RecipeServiceInterface
 import com.kotlinapp.util.Constants
+import com.kotlinapp.viewmodel.RecipeActivityViewModel
 import com.kotlinapp.viewmodel.RecipeCategoryListActivityViewModel
 import com.kotlinapp.viewmodel.RecipeListActivityViewModel
 import dagger.Binds
@@ -29,6 +30,10 @@ abstract class RecipeViewModelModule {
     @ViewModelKey(RecipeListActivityViewModel::class)
     abstract fun providerRecipeListActivityViewModel(recipeListActivityViewModel: RecipeListActivityViewModel): ViewModel
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(RecipeActivityViewModel::class)
+    abstract fun providerRecipeActivityViewModel(recipeActivityViewModel: RecipeActivityViewModel): ViewModel
 
     @Module
     companion object {
