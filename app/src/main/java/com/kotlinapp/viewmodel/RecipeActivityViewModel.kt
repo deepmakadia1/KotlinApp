@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class RecipeActivityViewModel @Inject internal constructor(private val recipeRepository: RecipeRepository): ViewModel(){
 
-    fun getMeal(mealId:String):LiveData<ArrayList<RecipeModel.Meal>>{
+    fun getMeal(mealId:String?):LiveData<ArrayList<RecipeModel.Meal>>{
         return recipeRepository.getMutableLiveDataRecipe(mealId)
     }
 

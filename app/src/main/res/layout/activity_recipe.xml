@@ -8,6 +8,15 @@
         <variable
             name="meal"
             type="com.kotlinapp.model.entity.RecipeModel.Meal" />
+
+        <variable
+            name="imageUrl"
+            type="String" />
+
+        <variable
+            name="mealName"
+            type="String" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -27,10 +36,12 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/_200sdp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{meal.strMealThumb}"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:imageUrl="@{imageUrl}"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/recipe_image" />
 
             <TextView
+                android:id="@+id/tvMeal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imgRecipe"
@@ -39,7 +50,7 @@
                 android:minHeight="@dimen/_50sdp"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
-                android:text="@{meal.strMeal}"
+                android:text="@{mealName}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16ssp" />
 
@@ -52,7 +63,7 @@
                 android:minHeight="@dimen/_50sdp"
                 android:paddingLeft="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
-                android:text="Ingredients"
+                android:text="@string/ingredients"
                 android:textColor="@color/text"
                 android:textSize="@dimen/_16ssp" />
 

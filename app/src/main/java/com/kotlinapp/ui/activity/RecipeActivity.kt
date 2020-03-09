@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,7 +31,12 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(videoLink)))
         }
 
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        binding?.mealName = intent.getStringExtra(Constants.RECIPE_MEAL_NAME)
+        binding?.imageUrl = intent.getStringExtra(Constants.RECIPE_MEAL_THUMB)
+
+        binding?.imgRecipe?.let { ViewCompat.setTransitionName(it,Constants.TRANSITION_2) }
+        binding?.tvMeal?.let { ViewCompat.setTransitionName(it,Constants.TRANSITION_3) }
+
         viewModel?.getMeal(intent.getStringExtra(Constants.RECIPE_MEAL_ID))
             ?.observe(this, Observer {
                 binding?.meal = it[0]

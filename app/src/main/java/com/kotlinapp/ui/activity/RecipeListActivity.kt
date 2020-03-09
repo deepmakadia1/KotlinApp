@@ -21,7 +21,7 @@ class RecipeListActivity : BaseActivity<ActivityRecipeListBinding,RecipeListActi
         super.onCreate(savedInstanceState)
 
         binding?.toolbarText?.text = intent.getStringExtra(Constants.RECIPE_CATEGORY_NAME)
-        binding?.toolbarText?.let { ViewCompat.setTransitionName(it,Constants.ADDRESS1_TRANSITION_NAME) }
+        binding?.toolbarText?.let { ViewCompat.setTransitionName(it,Constants.TRANSITION_1) }
 
         recipeListAdapter = RecipeListAdapter(this,recipeList)
         binding?.recRecipes?.layoutManager = LinearLayoutManager(this)
@@ -37,7 +37,6 @@ class RecipeListActivity : BaseActivity<ActivityRecipeListBinding,RecipeListActi
             }
         })
 
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
         viewModel?.getRecipeList(intent.getStringExtra(Constants.RECIPE_CATEGORY_NAME))?.observe(this,
             Observer {
                 setRecyclerView(it)

@@ -14,12 +14,12 @@ interface RecipeServiceInterface {
 
     @GET("filter.php")
     fun getRecipesList(
-        @Query("c") categoryName: String
+        @Query("c") categoryName: String?
     ): Observable<RecipeListModel>
 
     @GET("lookup.php")
     fun getRecipe(
-        @Query("i") mealId:String
+        @Query("i") mealId:String?
     ):Observable<RecipeModel>
 
 }

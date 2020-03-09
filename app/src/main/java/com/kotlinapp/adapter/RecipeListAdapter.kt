@@ -5,13 +5,21 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlinapp.R
 import com.kotlinapp.databinding.ItemRecipeBinding
 import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.ui.activity.RecipeActivity
+import com.kotlinapp.ui.activity.RecipeListActivity
 import com.kotlinapp.util.Constants
+import kotlinx.android.synthetic.main.activity_recipe.view.*
+import kotlinx.android.synthetic.main.activity_recipe.view.imgRecipe
+import kotlinx.android.synthetic.main.item_categories.view.*
+import kotlinx.android.synthetic.main.item_recipe.view.*
 
 class RecipeListAdapter constructor(
     private val activity: Activity,
@@ -41,8 +49,20 @@ class RecipeListAdapter constructor(
 
         init {
             itemView.setOnClickListener {
-                activity.startActivity(Intent(activity, RecipeActivity::class.java)
-                    .putExtra(Constants.RECIPE_MEAL_ID,recipeList[adapterPosition].idMeal))
+
+                val intent = Intent(activity, RecipeActivity::class.java)
+
+                val pair1 = Pair.create<View,String>(itemView.imgRecipe, Constants.TRANSITION_2)
+                val pair2=Pair.create<View,String>(itemView.tvRecipe, Constants.TRANSITION_3)
+
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                    pair1,
+                    pair2
+                )
+                intent.putExtra(Constants.RECIPE_MEAL_ID, recipeList[adapterPosition].idMeal)
+                intent.putExtra(Constants.RECIPE_MEAL_THUMB, recipeList[adapterPosition].strMealThumb)
+                intent.putExtra(Constants.RECIPE_MEAL_NAME, recipeList[adapterPosition].strMeal)
+                ActivityCompat.startActivity(activity, intent, options.toBundle())
             }
         }
     }

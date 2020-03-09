@@ -40,7 +40,7 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
     private var mutableLiveDataRecipeList = MutableLiveData<ArrayList<RecipeListModel.Meal>>()
     private var recipeList = ArrayList<RecipeListModel.Meal>()
 
-    fun getRecipeList(categoryName: String): MutableLiveData<ArrayList<RecipeListModel.Meal>> {
+    fun getRecipeList(categoryName: String?): MutableLiveData<ArrayList<RecipeListModel.Meal>> {
         showProgress()
 
         recipeServiceInterface?.getRecipesList(categoryName)?.let {
@@ -65,7 +65,7 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
     private var mutableLiveDataRecipe = MutableLiveData<ArrayList<RecipeModel.Meal>>()
     private var recipe = ArrayList<RecipeModel.Meal>()
 
-    fun getMutableLiveDataRecipe(mealId: String): MutableLiveData<ArrayList<RecipeModel.Meal>> {
+    fun getMutableLiveDataRecipe(mealId: String?): MutableLiveData<ArrayList<RecipeModel.Meal>> {
 
         showProgress()
 

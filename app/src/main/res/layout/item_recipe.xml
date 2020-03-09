@@ -17,9 +17,11 @@
             android:layout_height="wrap_content"
             android:minHeight="@dimen/_200sdp"
             android:scaleType="centerCrop"
-            app:imageUrl="@{recipe.strMealThumb}" />
+            app:imageUrl="@{recipe.strMealThumb}"
+            android:contentDescription="@string/recipe_image" />
 
         <TextView
+            android:id="@+id/tvRecipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/_50sdp"
