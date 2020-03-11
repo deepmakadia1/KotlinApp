@@ -97,12 +97,13 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
     implementation "com.squareup.okhttp:okhttp:$okHttpVersion"
 
-    //fab button
-    implementation 'com.github.clans:fab:1.6.4'
-
     //scalable lib
     implementation "com.intuit.sdp:sdp-android:$scalableLib"
     implementation "com.intuit.ssp:ssp-android:$scalableLib"
 
     implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
+    implementation 'com.github.didikk:sticky-nestedscrollview:1.0.1'
+
+    implementation 'com.google.android.material:material:1.1.0'
+
 }

@@ -2,4 +2,8 @@
     <string name="app_name">KotlinApp</string>
     <string name="ingredients">Ingredients</string>
     <string name="recipe_image">recipe image</string>
+    <string name="recipe">Recipe</string>
+    <string name="read_more">Read more</string>
+    <string name="read_less">Read less</string>
+    <string name="categories">Categories</string>
 </resources>

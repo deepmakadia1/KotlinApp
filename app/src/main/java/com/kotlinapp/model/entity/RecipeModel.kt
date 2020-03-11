@@ -117,123 +117,123 @@ data class RecipeModel(
             ingredients.clear()
             if (!strIngredient1.isNullOrEmpty()) {
                 if (!strMeasure1.isNullOrEmpty())
-                    ingredients.add("$strIngredient1 ($strMeasure1)")
+                    ingredients.add("${strIngredient1.trim()} (${strMeasure1.trim()})")
                 else
-                    ingredients.add(strIngredient1)
+                    ingredients.add(strIngredient1.trim())
             }
             if (!strIngredient2.isNullOrEmpty()) {
                 if (!strMeasure2.isNullOrEmpty())
-                    ingredients.add("$strIngredient2 ($strMeasure2)")
+                    ingredients.add("${strIngredient2.trim()} (${strMeasure2.trim()})")
                 else
-                    ingredients.add(strIngredient2)
+                    ingredients.add(strIngredient2.trim())
             }
             if (!strIngredient3.isNullOrEmpty()) {
                 if (!strMeasure3.isNullOrEmpty())
-                    ingredients.add("$strIngredient3 ($strMeasure3)")
+                    ingredients.add("${strIngredient3.trim()} (${strMeasure3.trim()})")
                 else
-                    ingredients.add(strIngredient3)
+                    ingredients.add(strIngredient3.trim())
             }
             if (!strIngredient4.isNullOrEmpty()) {
                 if (!strMeasure4.isNullOrEmpty())
-                    ingredients.add("$strIngredient4 ($strMeasure4)")
+                    ingredients.add("${strIngredient4.trim()} (${strMeasure4.trim()})")
                 else
-                    ingredients.add(strIngredient4)
+                    ingredients.add(strIngredient4.trim())
             }
             if (!strIngredient5.isNullOrEmpty()) {
                 if (!strMeasure5.isNullOrEmpty())
-                    ingredients.add("$strIngredient5 ($strMeasure5)")
+                    ingredients.add("${strIngredient5.trim()} (${strMeasure5.trim()})")
                 else
-                    ingredients.add(strIngredient5)
+                    ingredients.add(strIngredient5.trim())
             }
             if (!strIngredient6.isNullOrEmpty()) {
                 if (!strMeasure6.isNullOrEmpty())
-                    ingredients.add("$strIngredient6 ($strMeasure6)")
+                    ingredients.add("${strIngredient6.trim()} (${strMeasure6.trim()})")
                 else
-                    ingredients.add(strIngredient6)
+                    ingredients.add(strIngredient6.trim())
             }
             if (!strIngredient7.isNullOrEmpty()) {
                 if (!strMeasure7.isNullOrEmpty())
-                    ingredients.add("$strIngredient7 ($strMeasure7)")
+                    ingredients.add("${strIngredient7.trim()} (${strMeasure7.trim()})")
                 else
-                    ingredients.add(strIngredient7)
+                    ingredients.add(strIngredient7.trim())
             }
             if (!strIngredient8.isNullOrEmpty()) {
                 if (!strMeasure8.isNullOrEmpty())
-                    ingredients.add("$strIngredient8 ($strMeasure8)")
+                    ingredients.add("${strIngredient8.trim()} (${strMeasure8.trim()})")
                 else
-                    ingredients.add(strIngredient8)
+                    ingredients.add(strIngredient8.trim())
             }
             if (!strIngredient9.isNullOrEmpty()) {
                 if (!strMeasure9.isNullOrEmpty())
-                    ingredients.add("$strIngredient9 ($strMeasure9)")
+                    ingredients.add("${strIngredient9.trim()} (${strMeasure9.trim()})")
                 else
-                    ingredients.add(strIngredient9)
+                    ingredients.add(strIngredient9.trim())
             }
             if (!strIngredient10.isNullOrEmpty()) {
                 if (!strMeasure10.isNullOrEmpty())
-                    ingredients.add("$strIngredient10 ($strMeasure10)")
+                    ingredients.add("${strIngredient10.trim()} (${strMeasure10.trim()})")
                 else
-                    ingredients.add(strIngredient10)
+                    ingredients.add(strIngredient10.trim())
             }
             if (!strIngredient11.isNullOrEmpty()) {
                 if (!strMeasure11.isNullOrEmpty())
-                    ingredients.add("$strIngredient11 ($strMeasure11)")
+                    ingredients.add("${strIngredient11.trim()} (${strMeasure11.trim()})")
                 else
-                    ingredients.add(strIngredient11)
+                    ingredients.add(strIngredient11.trim())
             }
             if (!strIngredient12.isNullOrEmpty()) {
                 if (!strMeasure12.isNullOrEmpty())
-                    ingredients.add("$strIngredient12 ($strMeasure12)")
+                    ingredients.add("${strIngredient12.trim()} (${strMeasure12.trim()})")
                 else
-                    ingredients.add(strIngredient12)
+                    ingredients.add(strIngredient12.trim())
             }
             if (!strIngredient13.isNullOrEmpty()) {
                 if (!strMeasure13.isNullOrEmpty())
-                    ingredients.add("$strIngredient13 ($strMeasure13)")
+                    ingredients.add("${strIngredient13.trim()} (${strMeasure13.trim()})")
                 else
-                    ingredients.add(strIngredient13)
+                    ingredients.add(strIngredient13.trim())
             }
             if (!strIngredient14.isNullOrEmpty()) {
                 if (!strMeasure14.isNullOrEmpty())
-                    ingredients.add("$strIngredient14 ($strMeasure14)")
+                    ingredients.add("${strIngredient14.trim()} (${strMeasure14.trim()})")
                 else
-                    ingredients.add(strIngredient14)
+                    ingredients.add(strIngredient14.trim())
             }
             if (!strIngredient15.isNullOrEmpty()) {
                 if (!strMeasure15.isNullOrEmpty())
-                    ingredients.add("$strIngredient15 ($strMeasure15)")
+                    ingredients.add("${strIngredient15.trim()} (${strMeasure15.trim()})")
                 else
-                    ingredients.add(strIngredient15)
+                    ingredients.add(strIngredient15.trim())
             }
             if (!strIngredient16.isNullOrEmpty()) {
                 if (!strMeasure16.isNullOrEmpty())
-                    ingredients.add("$strIngredient16 ($strMeasure16)")
+                    ingredients.add("${strIngredient16.trim()} (${strMeasure16.trim()})")
                 else
-                    ingredients.add(strIngredient16)
+                    ingredients.add(strIngredient16.trim())
             }
             if (!strIngredient17.isNullOrEmpty()) {
                 if (!strMeasure17.isNullOrEmpty())
-                    ingredients.add("$strIngredient17 ($strMeasure17)")
+                    ingredients.add("${strIngredient17.trim()} (${strMeasure17.trim()})")
                 else
-                    ingredients.add(strIngredient17)
+                    ingredients.add(strIngredient17.trim())
             }
             if (!strIngredient18.isNullOrEmpty()) {
                 if (!strMeasure18.isNullOrEmpty())
-                    ingredients.add("$strIngredient18 ($strMeasure18)")
+                    ingredients.add("${strIngredient18.trim()} (${strMeasure18.trim()})")
                 else
-                    ingredients.add(strIngredient18)
+                    ingredients.add(strIngredient18.trim())
             }
             if (!strIngredient19.isNullOrEmpty()) {
                 if (!strMeasure19.isNullOrEmpty())
-                    ingredients.add("$strIngredient19 ($strMeasure19)")
+                    ingredients.add("${strIngredient19.trim()} (${strMeasure19.trim()})")
                 else
-                    ingredients.add(strIngredient19)
+                    ingredients.add(strIngredient19.trim())
             }
             if (!strIngredient20.isNullOrEmpty()) {
                 if (!strMeasure20.isNullOrEmpty())
-                    ingredients.add("$strIngredient20 ($strMeasure20)")
+                    ingredients.add("${strIngredient20.trim()} (${strMeasure20.trim()})")
                 else
-                    ingredients.add(strIngredient20)
+                    ingredients.add(strIngredient20.trim())
             }
             return ingredients
         }

@@ -14,11 +14,7 @@ import com.kotlinapp.R
 import com.kotlinapp.databinding.ItemRecipeBinding
 import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.ui.activity.RecipeActivity
-import com.kotlinapp.ui.activity.RecipeListActivity
 import com.kotlinapp.util.Constants
-import kotlinx.android.synthetic.main.activity_recipe.view.*
-import kotlinx.android.synthetic.main.activity_recipe.view.imgRecipe
-import kotlinx.android.synthetic.main.item_categories.view.*
 import kotlinx.android.synthetic.main.item_recipe.view.*
 
 class RecipeListAdapter constructor(
@@ -53,7 +49,7 @@ class RecipeListAdapter constructor(
                 val intent = Intent(activity, RecipeActivity::class.java)
 
                 val pair1 = Pair.create<View,String>(itemView.imgRecipe, Constants.TRANSITION_2)
-                val pair2=Pair.create<View,String>(itemView.tvRecipe, Constants.TRANSITION_3)
+                val pair2=Pair.create<View,String>(itemView.tvRecipeName, Constants.TRANSITION_3)
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                     pair1,

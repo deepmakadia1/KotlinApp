@@ -6,11 +6,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.R
 import com.kotlinapp.adapter.CategoryListAdapter
-import com.kotlinapp.databinding.ActivityCategoryListActivityBinding
+import com.kotlinapp.databinding.ActivityRecipeCategoryListBinding
 import com.kotlinapp.model.entity.RecipeCategoryModel
 import com.kotlinapp.viewmodel.RecipeCategoryListActivityViewModel
 
-class RecipeCategoryListActivity : BaseActivity<ActivityCategoryListActivityBinding,RecipeCategoryListActivityViewModel>() {
+class RecipeCategoryListActivity : BaseActivity<ActivityRecipeCategoryListBinding,RecipeCategoryListActivityViewModel>() {
 
     private lateinit var categoryListAdapter: CategoryListAdapter
     private val categoryList = ArrayList<RecipeCategoryModel.Category>()
@@ -45,7 +45,7 @@ class RecipeCategoryListActivity : BaseActivity<ActivityCategoryListActivityBind
     }
 
     override fun getLayout(): Int {
-        return R.layout.activity_category_list_activity
+        return R.layout.activity_recipe_category_list
     }
 
     override fun getViewModel(): Class<RecipeCategoryListActivityViewModel> {
