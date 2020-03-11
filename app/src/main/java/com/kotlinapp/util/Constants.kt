@@ -8,6 +8,7 @@ class Constants {
         const val RECIPE_MEAL_ID = "recipe_meal_id"
         const val RECIPE_MEAL_THUMB = "recipe_meal_thumb"
         const val RECIPE_MEAL_NAME = "recipe_meal_name"
+        const val RECIPE_RELATED = "recipe_related"
 
         //Transitions
         const val TRANSITION_1 = "transition_1"

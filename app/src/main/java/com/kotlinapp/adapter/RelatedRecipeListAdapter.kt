@@ -12,20 +12,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.kotlinapp.R
-import com.kotlinapp.databinding.ItemRecipeBinding
+import com.kotlinapp.databinding.ItemRelatedRecipeBinding
 import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.ui.RecipeActivity
 import com.kotlinapp.util.Constants
 import kotlinx.android.synthetic.main.item_recipe.view.*
-import kotlin.random.Random
+import kotlinx.android.synthetic.main.item_related_recipe.view.*
 
-class RecipeListAdapter constructor(
+class RelatedRecipeListAdapter(
     private val activity: Activity,
-    private val recipes: ArrayList<RecipeListModel.Meal>
+    private val recipes: ArrayList<RecipeListModel.Meal>,
+    private val category: String
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(activity).inflate(R.layout.item_recipe, parent, false)
-        return RecipeViewHolder(view, activity, recipes)
+        val view = LayoutInflater.from(activity).inflate(R.layout.item_related_recipe, parent, false)
+        return RelatedRecipeViewHolder(view, activity, recipes)
     }
 
     override fun getItemCount(): Int {
@@ -33,25 +34,26 @@ class RecipeListAdapter constructor(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val recipeViewHolder = holder as RecipeViewHolder
-        recipeViewHolder.itemRecipeBinding?.recipe = recipes[position]
+        val relatedRecipeViewHolder = holder as RelatedRecipeViewHolder
+        relatedRecipeViewHolder.itemRelatedRecipeBinding?.recipe = recipes[position]
+        relatedRecipeViewHolder.itemRelatedRecipeBinding?.category = category
     }
 
-    private class RecipeViewHolder(
+    private class RelatedRecipeViewHolder(
         itemView: View,
         activity: Activity,
         recipeList: ArrayList<RecipeListModel.Meal>
     ) :
         RecyclerView.ViewHolder(itemView) {
-        var itemRecipeBinding: ItemRecipeBinding? = DataBindingUtil.bind(itemView)
+        var itemRelatedRecipeBinding: ItemRelatedRecipeBinding? = DataBindingUtil.bind(itemView)
 
         init {
             itemView.setOnClickListener {
 
                 val intent = Intent(activity, RecipeActivity::class.java)
 
-                val pair1 = Pair.create<View,String>(itemView.imgRecipe, Constants.TRANSITION_2)
-                val pair2=Pair.create<View,String>(itemView.tvRecipeName, Constants.TRANSITION_3)
+                val pair1 = Pair.create<View,String>(itemView.imgRelatedRecipe, Constants.TRANSITION_2)
+                val pair2=Pair.create<View,String>(itemView.tvRelatedRecipeName, Constants.TRANSITION_3)
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                     pair1,
@@ -66,20 +68,8 @@ class RecipeListAdapter constructor(
         }
 
         private fun getRelatedRecipes(recipeList: ArrayList<RecipeListModel.Meal>): String {
-            val refRecipes = ArrayList<RecipeListModel.Meal>()
-            refRecipes.addAll(recipeList)
-            val relatedRecipes = ArrayList<RecipeListModel.Meal>()
-            if (refRecipes.size > 10){
-                for (i in 0..9){
-                    val random = refRecipes.random()
-                    relatedRecipes.add(random)
-                    refRecipes.remove(random)
-                }
-            }else{
-                relatedRecipes.addAll(refRecipes)
-            }
             val gson = Gson()
-            return gson.toJson(relatedRecipes)
+            return gson.toJson(recipeList)
         }
     }
 

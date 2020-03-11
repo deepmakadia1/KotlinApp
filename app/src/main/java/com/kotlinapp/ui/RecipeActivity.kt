@@ -8,15 +8,27 @@ import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.kotlinapp.R
+import com.kotlinapp.adapter.RelatedRecipeListAdapter
 import com.kotlinapp.databinding.ActivityRecipeBinding
 import com.kotlinapp.databinding.ItemIngredientBinding
+import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.util.Constants
 import com.kotlinapp.viewmodel.RecipeActivityViewModel
+import java.lang.reflect.Type
+
 
 class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewModel>() {
 
     private lateinit var videoLink: String
+    var gson = Gson()
+    var type: Type = object : TypeToken<List<RecipeListModel.Meal>?>() {}.type
+    var relatedRecipes = ArrayList<RecipeListModel.Meal>()
+    private lateinit var relatedRecipeListAdapter: RelatedRecipeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +37,14 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(videoLink)))
         }
 
+        relatedRecipes = gson.fromJson(intent.getStringExtra(Constants.RECIPE_RELATED),type)
         binding?.mealName = intent.getStringExtra(Constants.RECIPE_MEAL_NAME)
         binding?.imageUrl = intent.getStringExtra(Constants.RECIPE_MEAL_THUMB)
 
         binding?.imgRecipe?.let { ViewCompat.setTransitionName(it, Constants.TRANSITION_2) }
         binding?.collapsingToolbar?.let { ViewCompat.setTransitionName(it, Constants.TRANSITION_3) }
+
+
 
     }
 
@@ -58,6 +73,12 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
                 videoLink = it[0].strYoutube
                 binding?.segmentIngredient?.visibility = View.VISIBLE
                 binding?.segmentRecipe?.visibility = View.VISIBLE
+                binding?.segmentRelatedRecipes?.visibility = View.VISIBLE
+
+                relatedRecipeListAdapter = RelatedRecipeListAdapter(this,relatedRecipes,it[0].strCategory)
+                binding?.recRelatedRecipes?.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+                binding?.recRelatedRecipes?.adapter = relatedRecipeListAdapter
+
                 for (ingredient in it[0].getIngredients()) {
                     if (ingredient != null) {
                         addIngredient(ingredient)

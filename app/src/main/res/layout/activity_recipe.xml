@@ -201,13 +201,63 @@
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:justificationMode="inter_word"
                         android:lineSpacingExtra="@dimen/_2sdp"
-                        android:text="@{meal.strInstructions}"
                         android:orientation="vertical"
                         android:paddingTop="@dimen/_10sdp"
                         android:paddingBottom="@dimen/_10sdp"
+                        android:text="@{meal.strInstructions}"
                         android:textColor="@color/text"
                         android:textSize="@dimen/_13ssp"
                         tools:ignore="UnusedAttribute" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/segmentRelatedRecipes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:tag="sticky">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.3dp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@color/gray" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/background"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/_50sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_10sdp"
+                            android:text="@{`Related `+meal.strCategory+` Recipes`}"
+                            android:textColor="@color/text"
+                            android:textSize="@dimen/_16ssp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.3dp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:background="@color/gray" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recRelatedRecipes"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
