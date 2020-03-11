@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.RecipeActivity"></activity>
-        <activity android:name=".ui.activity.RecipeListActivity" />
-        <activity android:name=".ui.activity.RecipeCategoryListActivity">
+        <activity android:name=".ui.RecipeActivity"/>
+        <activity android:name=".ui.RecipeListActivity" />
+        <activity android:name=".ui.RecipeCategoryListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

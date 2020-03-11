@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kotlinapp.R
 import com.kotlinapp.databinding.ItemCategoriesBinding
 import com.kotlinapp.model.entity.RecipeCategoryModel
-import com.kotlinapp.ui.activity.RecipeListActivity
+import com.kotlinapp.ui.RecipeListActivity
 import com.kotlinapp.util.Constants
 import kotlinx.android.synthetic.main.item_categories.view.*
 

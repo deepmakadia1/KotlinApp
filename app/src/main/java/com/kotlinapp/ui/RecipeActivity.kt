@@ -1,4 +1,4 @@
-package com.kotlinapp.ui.activity
+package com.kotlinapp.ui
 
 import android.content.Intent
 import android.net.Uri

@@ -1,4 +1,4 @@
-package com.kotlinapp.ui.activity
+package com.kotlinapp.ui
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,7 @@ import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.util.Constants
 import com.kotlinapp.viewmodel.RecipeListActivityViewModel
 
-class RecipeListActivity : BaseActivity<ActivityRecipeListBinding,RecipeListActivityViewModel>() {
+class RecipeListActivity : BaseActivity<ActivityRecipeListBinding, RecipeListActivityViewModel>() {
 
     private lateinit var recipeListAdapter : RecipeListAdapter
     private var recipeList:ArrayList<RecipeListModel.Meal> = ArrayList()

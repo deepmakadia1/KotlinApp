@@ -1,4 +1,4 @@
-package com.kotlinapp.ui.activity
+package com.kotlinapp.ui
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import com.kotlinapp.databinding.ActivityRecipeCategoryListBinding
 import com.kotlinapp.model.entity.RecipeCategoryModel
 import com.kotlinapp.viewmodel.RecipeCategoryListActivityViewModel
 
-class RecipeCategoryListActivity : BaseActivity<ActivityRecipeCategoryListBinding,RecipeCategoryListActivityViewModel>() {
+class RecipeCategoryListActivity : BaseActivity<ActivityRecipeCategoryListBinding, RecipeCategoryListActivityViewModel>() {
 
     private lateinit var categoryListAdapter: CategoryListAdapter
     private val categoryList = ArrayList<RecipeCategoryModel.Category>()
