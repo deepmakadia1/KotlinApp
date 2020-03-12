@@ -71,8 +71,10 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
 
         viewModel?.getMeal(intent.getStringExtra(Constants.RECIPE_MEAL_ID))
             ?.observe(this, Observer {
+                
                 binding?.meal = it[0]
                 videoLink = it[0].strYoutube
+
                 binding?.segmentIngredient?.visibility = View.VISIBLE
                 binding?.segmentRecipe?.visibility = View.VISIBLE
                 binding?.segmentRelatedRecipes?.visibility = View.VISIBLE
@@ -86,6 +88,7 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
                         addIngredient(ingredient)
                     }
                 }
+
             })
 
     }
