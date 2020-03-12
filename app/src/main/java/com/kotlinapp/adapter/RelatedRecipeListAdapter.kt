@@ -2,6 +2,7 @@ package com.kotlinapp.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,17 +17,17 @@ import com.kotlinapp.databinding.ItemRelatedRecipeBinding
 import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.ui.RecipeActivity
 import com.kotlinapp.util.Constants
-import kotlinx.android.synthetic.main.item_recipe.view.*
 import kotlinx.android.synthetic.main.item_related_recipe.view.*
 
 class RelatedRecipeListAdapter(
     private val activity: Activity,
     private val recipes: ArrayList<RecipeListModel.Meal>,
+    private val relatedRecipeList: ArrayList<RecipeListModel.Meal>,
     private val category: String
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(activity).inflate(R.layout.item_related_recipe, parent, false)
-        return RelatedRecipeViewHolder(view, activity, recipes)
+        return RelatedRecipeViewHolder(view, activity, recipes,relatedRecipeList)
     }
 
     override fun getItemCount(): Int {
@@ -42,7 +43,8 @@ class RelatedRecipeListAdapter(
     private class RelatedRecipeViewHolder(
         itemView: View,
         activity: Activity,
-        recipeList: ArrayList<RecipeListModel.Meal>
+        recipeList: ArrayList<RecipeListModel.Meal>,
+        relatedRecipeList: ArrayList<RecipeListModel.Meal>
     ) :
         RecyclerView.ViewHolder(itemView) {
         var itemRelatedRecipeBinding: ItemRelatedRecipeBinding? = DataBindingUtil.bind(itemView)
@@ -59,15 +61,19 @@ class RelatedRecipeListAdapter(
                     pair1,
                     pair2
                 )
-                intent.putExtra(Constants.RECIPE_RELATED,getRelatedRecipes(recipeList))
-                intent.putExtra(Constants.RECIPE_MEAL_ID, recipeList[adapterPosition].idMeal)
-                intent.putExtra(Constants.RECIPE_MEAL_THUMB, recipeList[adapterPosition].strMealThumb)
-                intent.putExtra(Constants.RECIPE_MEAL_NAME, recipeList[adapterPosition].strMeal)
+                val bundle = Bundle()
+                bundle.putString(Constants.RECIPE_RELATED,getRecipesInString(relatedRecipeList))
+                bundle.putString(Constants.RECIPE_MEAL_ID, recipeList[adapterPosition].idMeal)
+                bundle.putString(Constants.RECIPE_MEAL_THUMB, recipeList[adapterPosition].strMealThumb)
+                bundle.putString(Constants.RECIPE_MEAL_NAME, recipeList[adapterPosition].strMeal)
+
+                intent.putExtras(bundle)
+
                 ActivityCompat.startActivity(activity, intent, options.toBundle())
             }
         }
 
-        private fun getRelatedRecipes(recipeList: ArrayList<RecipeListModel.Meal>): String {
+        private fun getRecipesInString(recipeList: ArrayList<RecipeListModel.Meal>):String{
             val gson = Gson()
             return gson.toJson(recipeList)
         }

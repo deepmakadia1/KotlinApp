@@ -27,7 +27,7 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
     private lateinit var videoLink: String
     var gson = Gson()
     var type: Type = object : TypeToken<List<RecipeListModel.Meal>?>() {}.type
-    var relatedRecipes = ArrayList<RecipeListModel.Meal>()
+    var recipeList = ArrayList<RecipeListModel.Meal>()
     private lateinit var relatedRecipeListAdapter: RelatedRecipeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +37,16 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(videoLink)))
         }
 
-        relatedRecipes = gson.fromJson(intent.getStringExtra(Constants.RECIPE_RELATED),type)
-        binding?.mealName = intent.getStringExtra(Constants.RECIPE_MEAL_NAME)
-        binding?.imageUrl = intent.getStringExtra(Constants.RECIPE_MEAL_THUMB)
+        val bundle = intent.extras
+
+        if (bundle!=null){
+            recipeList = gson.fromJson(bundle.getString(Constants.RECIPE_RELATED),type)
+            binding?.mealName = bundle.getString(Constants.RECIPE_MEAL_NAME)
+            binding?.imageUrl = bundle.getString(Constants.RECIPE_MEAL_THUMB)
+        }
 
         binding?.imgRecipe?.let { ViewCompat.setTransitionName(it, Constants.TRANSITION_2) }
         binding?.collapsingToolbar?.let { ViewCompat.setTransitionName(it, Constants.TRANSITION_3) }
-
-
 
     }
 
@@ -75,7 +77,7 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
                 binding?.segmentRecipe?.visibility = View.VISIBLE
                 binding?.segmentRelatedRecipes?.visibility = View.VISIBLE
 
-                relatedRecipeListAdapter = RelatedRecipeListAdapter(this,relatedRecipes,it[0].strCategory)
+                relatedRecipeListAdapter = RelatedRecipeListAdapter(this,getRelatedRecipes(recipeList),recipeList,it[0].strCategory)
                 binding?.recRelatedRecipes?.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
                 binding?.recRelatedRecipes?.adapter = relatedRecipeListAdapter
 
@@ -91,6 +93,23 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
     override fun onDestroy() {
         binding?.segmentIngredient?.visibility = View.GONE
         super.onDestroy()
+    }
+
+    private fun getRelatedRecipes(recipeList: ArrayList<RecipeListModel.Meal>): ArrayList<RecipeListModel.Meal> {
+        val refRecipes = ArrayList<RecipeListModel.Meal>()
+        refRecipes.addAll(recipeList)
+        val relatedRecipes = ArrayList<RecipeListModel.Meal>()
+        if (refRecipes.size > 10){
+            for (i in 0..9){
+                val random = refRecipes.random()
+                relatedRecipes.add(random)
+                refRecipes.remove(random)
+            }
+        }else{
+            relatedRecipes.addAll(refRecipes)
+        }
+
+        return relatedRecipes
     }
 
 }

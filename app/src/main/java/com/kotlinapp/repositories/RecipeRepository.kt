@@ -85,8 +85,6 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
             }.rxSingleCall(it)
         }
 
-
-
         return mutableLiveDataRecipe
     }
 

@@ -12,8 +12,4 @@ class RecipeActivityViewModel @Inject internal constructor(private val recipeRep
         return recipeRepository.getMutableLiveDataRecipe(mealId)
     }
 
-    fun getProgress():LiveData<Boolean>{
-        return recipeRepository.getProgress()
-    }
-
 }

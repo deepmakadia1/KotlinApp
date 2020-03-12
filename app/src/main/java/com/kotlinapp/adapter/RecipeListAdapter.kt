@@ -2,6 +2,7 @@ package com.kotlinapp.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,6 @@ import com.kotlinapp.model.entity.RecipeListModel
 import com.kotlinapp.ui.RecipeActivity
 import com.kotlinapp.util.Constants
 import kotlinx.android.synthetic.main.item_recipe.view.*
-import kotlin.random.Random
 
 class RecipeListAdapter constructor(
     private val activity: Activity,
@@ -57,30 +57,24 @@ class RecipeListAdapter constructor(
                     pair1,
                     pair2
                 )
-                intent.putExtra(Constants.RECIPE_RELATED,getRelatedRecipes(recipeList))
-                intent.putExtra(Constants.RECIPE_MEAL_ID, recipeList[adapterPosition].idMeal)
-                intent.putExtra(Constants.RECIPE_MEAL_THUMB, recipeList[adapterPosition].strMealThumb)
-                intent.putExtra(Constants.RECIPE_MEAL_NAME, recipeList[adapterPosition].strMeal)
+                val bundle = Bundle()
+                bundle.putString(Constants.RECIPE_RELATED,getRecipesInString(recipeList))
+                bundle.putString(Constants.RECIPE_MEAL_ID, recipeList[adapterPosition].idMeal)
+                bundle.putString(Constants.RECIPE_MEAL_THUMB, recipeList[adapterPosition].strMealThumb)
+                bundle.putString(Constants.RECIPE_MEAL_NAME, recipeList[adapterPosition].strMeal)
+
+                intent.putExtras(bundle)
+
                 ActivityCompat.startActivity(activity, intent, options.toBundle())
             }
         }
 
-        private fun getRelatedRecipes(recipeList: ArrayList<RecipeListModel.Meal>): String {
-            val refRecipes = ArrayList<RecipeListModel.Meal>()
-            refRecipes.addAll(recipeList)
-            val relatedRecipes = ArrayList<RecipeListModel.Meal>()
-            if (refRecipes.size > 10){
-                for (i in 0..9){
-                    val random = refRecipes.random()
-                    relatedRecipes.add(random)
-                    refRecipes.remove(random)
-                }
-            }else{
-                relatedRecipes.addAll(refRecipes)
-            }
+        private fun getRecipesInString(recipeList: ArrayList<RecipeListModel.Meal>):String{
             val gson = Gson()
-            return gson.toJson(relatedRecipes)
+            return gson.toJson(recipeList)
         }
+
+
     }
 
 }
