@@ -26,8 +26,8 @@ class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewMod
 
     private lateinit var videoLink: String
     var gson = Gson()
-    var type: Type = object : TypeToken<List<RecipeListModel.Meal>?>() {}.type
-    var recipeList = ArrayList<RecipeListModel.Meal>()
+    private var type: Type = object : TypeToken<List<RecipeListModel.Meal>?>() {}.type
+    private var recipeList = ArrayList<RecipeListModel.Meal>()
     private lateinit var relatedRecipeListAdapter: RelatedRecipeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

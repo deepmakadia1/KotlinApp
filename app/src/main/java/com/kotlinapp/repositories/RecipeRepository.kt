@@ -41,6 +41,7 @@ class RecipeRepository @Inject constructor(private var recipeServiceInterface: R
     private var recipeList = ArrayList<RecipeListModel.Meal>()
 
     fun getRecipeList(categoryName: String?): MutableLiveData<ArrayList<RecipeListModel.Meal>> {
+
         showProgress()
 
         recipeServiceInterface?.getRecipesList(categoryName)?.let {
