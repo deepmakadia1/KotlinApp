@@ -52,5 +52,4 @@ class RecipeCategoryListActivity : BaseActivity<ActivityRecipeCategoryListBindin
         return RecipeCategoryListActivityViewModel::class.java
     }
 
-
 }

@@ -21,11 +21,10 @@ import com.kotlinapp.util.Constants
 import com.kotlinapp.viewmodel.RecipeActivityViewModel
 import java.lang.reflect.Type
 
-
 class RecipeActivity : BaseActivity<ActivityRecipeBinding, RecipeActivityViewModel>() {
 
     private lateinit var videoLink: String
-    var gson = Gson()
+    private var gson = Gson()
     private var type: Type = object : TypeToken<List<RecipeListModel.Meal>?>() {}.type
     private var recipeList = ArrayList<RecipeListModel.Meal>()
     private lateinit var relatedRecipeListAdapter: RelatedRecipeListAdapter
